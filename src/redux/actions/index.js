@@ -34,11 +34,16 @@ export function getAllMovies() {
     return function (dispatch) {
         return fetch('db.json')
         .then((respuesta) => respuesta.json())
-        .then((respJson) => dispatch ({type: 'GET_ALL_MOVIES', payload: respJson}));
+        .then((respJson) => {dispatch ({type: 'GET_ALL_MOVIES', payload: respJson})});
     }
 };
 
 export function getMovieDetail() {
+    return function (dispatch) {
+        return fetch ('db.json')
+        .then ((respuesta) => respuesta.json())
+        .then ((respJson) => {dispatch({type: 'GET_MOVIE_DETAILS', payload: respJson})});
+    }
  };
 
 export function createMovie() { };
