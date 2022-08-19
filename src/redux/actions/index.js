@@ -6,6 +6,7 @@ export const GET_MOVIE_DETAILS = "GET_MOVIE_DETAILS";
 export const CREATE_MOVIE = "CREATE_MOVIE";
 export const DELETE_MOVIE = "DELETE_MOVIE";
 export const SEND_EMAIL = "SENT_EMAIL";
+
 // Esten atentos a que los nombres de las variables coincidan.
 
 // Fijarse que la sintaxis de nuestra Action creator es distinta a lo que venimos haciendo. Esto es
@@ -22,21 +23,28 @@ export const SEND_EMAIL = "SENT_EMAIL";
 
 // Inicializamos id en 6, para que nuestros próximos ID's no se pisen con los existentes.
 // La vas a usar en la funcion createMovie, descomentala cuando te haga falta;
-// let id = 6;
+let id = 6;
 // Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para crear la movie.
 // Puedes usar spread operator para copiar el objeto payload.
 
 // 🚨 IMPORTANTE SI USAN PROMESAS HAY QUE RETORNARLAS! LOS TESTS PUEDEN FALLAR SI NO LO HACEN 🚨
 
 
-export const getAllMovies = () => { };
+export function getAllMovies() { 
+    return function (dispatch) {
+        return fetch('db.json')
+        .then((respuesta) => respuesta.json())
+        .then((respJson) => dispatch ({type: 'GET_ALL_MOVIES', payload: respJson}));
+    }
+};
 
-export const getMovieDetail = () => { };
+export function getMovieDetail() {
+ };
 
-export const createMovie = () => { };
+export function createMovie() { };
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento el id de la movie que queremos eliminar.
-export const deleteMovie = () => { };
+export function deleteMovie() { };
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para enviar el form de contacto.
-export const sendEmail = () => { };
+export function sendEmail() { };
