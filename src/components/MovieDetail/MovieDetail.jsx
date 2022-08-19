@@ -8,12 +8,12 @@ import React from "react";
 // Si no lo hacen asi los test no van a correr.
 // TIP: Aqui seria un buen momento para utilizar el hook useSelector.
 
-const MovieDetail = (props) => {
+function MovieDetail (props) {
 
 
   return (
     <div>
-      
+      <h2>Movie Detail</h2>
     </div>
   );
 };

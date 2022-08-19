@@ -6,12 +6,12 @@ import React from "react";
 // No realicen un destructuring de ellos, sino que utilicenlos de la siguiente forma 'React.useState' y 'React.useEffect' ,
 // Si no lo hacen asi los test no van a correr.
 
-const CreateMovie = () => {
+function CreateMovie(props) {
 
 
   return (
     <div>
-      
+      <h2>Create Movie</h2>
     </div>
   );
 };

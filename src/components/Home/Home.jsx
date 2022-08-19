@@ -1,7 +1,5 @@
 import "./home.css";
-
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 // Importar las actions como Object Modules, sino los test no funcionarán!
 
@@ -12,7 +10,7 @@ export class Home extends Component {
   render() {
     return (
       <div className="home">
-
+        <h2>Home</h2>
       </div>
     );
   }

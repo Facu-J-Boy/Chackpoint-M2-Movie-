@@ -5,11 +5,11 @@ import React from "react";
 
 //PARA QUE LOS TEST CORRAN, DEBEN HACER ESTE COMPONENTE COMO UN FUNCIONAL COMPONENT.
 
-const MovieCard = (props) => {
+function MovieCard (props) {
 
   return (
     <div className="card">
-     
+     <h2>Movie Card</h2>
     </div>
   );
 };
