@@ -1,6 +1,5 @@
 // Importa las action types acá
-import {GET_ALL_MOVIES, GET_MOVIE_DETAILS, CREATE_MOVIE,  DELETE_MOVIE, SENT_EMAIL} from '../actions';
-import api from '../../../db.json';
+import {GET_ALL_MOVIES, GET_MOVIE_DETAILS, CREATE_MOVIE,  DELETE_MOVIE, SEND_EMAIL} from '../actions';
 
 
 const initialState = {
@@ -24,12 +23,21 @@ const rootReducer = (state = initialState, action) => {
       }
     case CREATE_MOVIE:
       return {
-
+        ...state,
+        movies: [...state.movies, action.payload]
       }
     case DELETE_MOVIE:
-    case SENT_EMAIL:
+      return {
+        ...state,
+        movies: state.movies.filter((e) => e.id !== action.payload)
+      }
+    case SEND_EMAIL:
+      return {
+        ...state,
+        email: action.payload
+      }
       default:
-        return {...state}
+        return state;
   }
 };
 

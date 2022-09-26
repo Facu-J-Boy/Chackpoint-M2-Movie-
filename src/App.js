@@ -1,21 +1,17 @@
 import React from "react";
-import {Home} from './components/Home/Home.jsx';
-import CreateMovie from "./components/CreateMovie/CreateMovie.jsx";
-import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
+import {Route} from 'react-router-dom';
 import Nav from "./components/Nav/Nav.jsx";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from "./components/Home/Home.jsx";
+import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
+import CreateMovie from "./components/CreateMovie/CreateMovie.jsx";
 
 function App() {
   return (
     <div>
-      <Router>
        <Nav/>
-       <Switch>
-        <Route exact path = '/' component = {Home}/>
-        <Route path = '/movie/:id' render = {MovieDetail}/>
-        <Route path = '/movies/create' render = {CreateMovie}/>
-       </Switch>
-       </Router>
+        <Route exact path = "/" component = {Home} />
+        <Route exact path = "/movie/:id" component = {MovieDetail}/>
+        <Route exact path = "/movies/create" component = {CreateMovie}/>
     </div>
   );
 }

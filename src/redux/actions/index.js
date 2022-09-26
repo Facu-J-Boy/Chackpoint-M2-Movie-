@@ -1,11 +1,12 @@
 import axios from "axios";
+import { Response } from "node-fetch";
 
 // Aca deben declarar las variables donde tengan el action types.
 export const GET_ALL_MOVIES = "GET_ALL_MOVIES";
 export const GET_MOVIE_DETAILS = "GET_MOVIE_DETAILS";
 export const CREATE_MOVIE = "CREATE_MOVIE";
 export const DELETE_MOVIE = "DELETE_MOVIE";
-export const SEND_EMAIL = "SENT_EMAIL";
+export const SEND_EMAIL = "SEND_EMAIL";
 
 // Esten atentos a que los nombres de las variables coincidan.
 
@@ -32,24 +33,42 @@ let id = 6;
 
 export function getAllMovies() { 
     return function (dispatch) {
-        return fetch('db.json')
-        .then((respuesta) => respuesta.json())
-        .then((respJson) => {dispatch ({type: 'GET_ALL_MOVIES', payload: respJson})});
+        return fetch('http://localhost:3001/movies')
+        .then(Response => Response.json())
+        .then(data => {dispatch ({type: GET_ALL_MOVIES, payload: data})});
     }
 };
 
-export function getMovieDetail() {
+export function getMovieDetail(id) {
     return function (dispatch) {
-        return fetch ('db.json')
-        .then ((respuesta) => respuesta.json())
-        .then ((respJson) => {dispatch({type: 'GET_MOVIE_DETAILS', payload: respJson})});
+        return fetch (`http://localhost:3001/movies/${id}`)
+        .then (response => response.json())
+        .then (data => {dispatch({type: GET_MOVIE_DETAILS, payload: data})});
     }
  };
 
-export function createMovie() { };
+export function createMovie(date) {
+    return {
+        type: CREATE_MOVIE,
+        payload: {
+            ...date,
+            id: id++
+        }
+    }
+ };
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento el id de la movie que queremos eliminar.
-export function deleteMovie() { };
+export function deleteMovie(id) {
+    return {
+        type: DELETE_MOVIE,
+        payload: id
+    }
+ };
 
 // Desde el componente ejecutamos la action creator, pasandole como argumento los values que vamos a utilizar para enviar el form de contacto.
-export function sendEmail() { };
+export function sendEmail(value) {
+    return {
+        type: SEND_EMAIL,
+        payload: value
+    }
+ };
